@@ -6,7 +6,9 @@ from flask import render_template, request, redirect, url_for
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template("index.html", title="Home-FigureList")
+    all_figures = Figure.query.all()
+    output = ""
+    return render_template("index.html", title="Home-FigureList", all_figures= all_figures)
 
 @app.route('/add_figure', methods=["GET", "POST"])
 def add_figure():
@@ -21,6 +23,29 @@ def add_figure():
             db.session.commit()
             return redirect(url_for('home'))
     return render_template('addfigure.html', title="Add a figure", form=form)
+
+@app.route('/update_figure/<int:id>', methods=["GET", "POST"])
+def update_figure(id):
+    form = FigureForm()
+    form.faction.choices = ["Space Marines", "Eldar", "Dark Eldar", "Choas", "Necrons", "Orks", "T'au", "Tyranids"]
+    armies = Army.query.all()
+    form.army.choices = [(army.id,army.name) for army in armies]
+    figure = Figure.query.filter_by(id=id).first()
+    if request.method == "POST":
+        figure.name = form.name.data
+        figure.number_of_models = form.number_of_models.data
+        figure.faction = form.faction.data
+        figure.army_id = form.army.data
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template("updatefigure.html", title="Updat a Figure", form=form, figure=figure)
+
+@app.route('/delete_figure/<int:id>', methods=["GET", "POST"])
+def delete_figure(id):
+    figure = Figure.query.filter_by(id=id).first()
+    db.session.delete(figure)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 @app.route('/view_army')
 def view_army():
@@ -48,7 +73,7 @@ def update_army(id):
         army.name = form.name.data
         db.session.commit()
         return redirect(url_for('view_army'))
-    return render_template("updatearmy.html", title="Updata Army", form=form, army=army)
+    return render_template("updatearmy.html", title="Updat a Army", form=form, army=army)
 
 @app.route('/delete_army/<int:id>', methods=["GET", "POST"])
 def delete_army(id):
