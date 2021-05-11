@@ -24,3 +24,21 @@ def add_army():
             db.session.commit()
             return redirect(url_for('view_army'))
     return render_template('addarmy.html', title="Add a army", form=form)
+
+@app.route('/update_army/<int:id>', methods=["GET", "POST"])
+def update_army(id):
+    form = ArmyForm()
+    army = Army.query.filter_by(id=id).first()
+    if request.method == "POST":
+        army.description = form.description.data
+        army.name = form.name.data
+        db.session.commit()
+        return redirect(url_for('view_army'))
+    return render_template("updatearmy.html", title="Updata Army", form=form, army=army)
+
+@app.route('/delete_army/<int:id>', methods=["GET", "POST"])
+def delete_army(id):
+    army = Army.query.filter_by(id=id).first()
+    db.session.delete(army)
+    db.session.commit()
+    return redirect(url_for('view_army'))

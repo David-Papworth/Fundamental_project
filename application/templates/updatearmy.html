@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+Original Army: {{army.description}}
+<br>
+<form action='' method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{form.name}}
+    <br>
+    {{ form.description.label }} {{form.description}}
+    <br>
+    {{ form.submit }}
+</form>
+
+{% endblock body %}
