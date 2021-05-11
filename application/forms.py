@@ -11,5 +11,5 @@ class FigureForm(FlaskForm):
     name = StringField('Name of the figure', validators=[DataRequired()])
     number_of_models = IntegerField('number of models', validators=[DataRequired()])
     faction = SelectField('The faction the figure is from', choices=[], validators=[DataRequired()])
-    army = SelectField('The faction the figure is from', choices=[])
+    army = SelectField('Which army is this figure in', choices=[])
     submit = SubmitField('Add Figures')

@@ -15,10 +15,12 @@ def add_figure():
     form = FigureForm()
     form.faction.choices = ["Space Marines", "Eldar", "Dark Eldar", "Choas", "Necrons", "Orks", "T'au", "Tyranids"]
     armies = Army.query.all()
-    form.army.choices = [(army.id,army.name) for army in armies]
+    form.army.choices = [("","")]+[(army.id,army.name) for army in armies]
     if request.method == "POST":
         if form.validate_on_submit():
-            new_figure = Figure(name=form.name.data, number_of_models=form.number_of_models.data, faction=form.faction.data, army_id=form.army.data)
+            new_figure = Figure(name=form.name.data, number_of_models=form.number_of_models.data, faction=form.faction.data)
+            if form.army.data:
+                new_figure.army_id=form.army.data
             db.session.add(new_figure)
             db.session.commit()
             return redirect(url_for('home'))

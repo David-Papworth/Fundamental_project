@@ -17,7 +17,9 @@ class TestBase(TestCase):
     def setUp(self):
         db.create_all()
         test_army = Army(name='Army 1', description="This is my main army")
+        test_figure = Figure(name='Figure 1', number_of_models=8, faction='Space Marines' ,army_id=test_army.id)
         db.session.add(test_army)
+        db.session.add(test_figure)
         db.session.commit()
 
     def tearDown(self):
@@ -27,6 +29,18 @@ class TestBase(TestCase):
 class TestViews(TestBase):
     def test_home_get(self):
         response = self.client.get(url_for('home'))
+        self.assertEqual(response.status_code, 200)
+    
+    def test_add_army_get(self):
+        response = self.client.get(url_for('add_figure'))
+        self.assertEqual(response.status_code, 200)
+
+    def test_update_army_get(self):
+        response = self.client.get(url_for('update_figure', id=1), follow_redirects=True)
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_army_get(self):
+        response = self.client.get(url_for('delete_figure', id=1), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
     def test_view_army_get(self):
@@ -40,7 +54,7 @@ class TestViews(TestBase):
     def test_update_army_get(self):
         response = self.client.get(url_for('update_army', id=1), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
-        
+
     def test_delete_army_get(self):
         response = self.client.get(url_for('delete_army', id=1), follow_redirects=True)
         self.assertEqual(response.status_code, 200)
