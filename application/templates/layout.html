@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('add_army') }}">Add Figure</a>
+        <a href="{{ url_for('add_army') }}">Add Army</a>
+        <a href="{{ url_for('view_army') }}">View Army</a>
+        {% block body %}
+        {% endblock body %}
+    </body>
+</html>

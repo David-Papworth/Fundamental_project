@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<h2>Army List</h2>
+{% for army in all_armies %}
+    {{ army.name }}
+    <br>
+    {{ army.description }}
+    <br>
+    <br>
+{% endfor %}
+
+{% endblock body %}
