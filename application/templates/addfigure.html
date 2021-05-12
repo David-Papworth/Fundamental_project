@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+{% block body %}
+<br>
+<form action='' method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{form.name}}
+    <br>
+    {{ form.number_of_models.label }} {{form.number_of_models}}
+    <br>
+    {{ form.faction.label }} {{form.faction}}
+    <br>
+    {{ form.army.label }} {{form.army}}
+    <br>
+    {{ form.submit }}
+</form>
+
+{% endblock body %}
