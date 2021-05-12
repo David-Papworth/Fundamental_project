@@ -50,8 +50,8 @@ class TestAddArmy(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
-        self.driver.get(f'http://localhost:{self.TEST_PORT}/add_army')
         for name, description in self.TEST_CASES:
+            self.driver.get(f'http://localhost:{self.TEST_PORT}/add_army')
             self.submit_input(name, description)
             self.assertIn(url_for('view_army'), self.driver.current_url)
 
@@ -75,8 +75,8 @@ class TestAddFigure(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
-        self.driver.get(f'http://localhost:{self.TEST_PORT}/add_figure')
         for name, number_of_models, faction, army in self.TEST_CASES:
+            self.driver.get(f'http://localhost:{self.TEST_PORT}/add_figure')
             self.submit_input(name, number_of_models, faction, army)
             self.assertIn(url_for('home'), self.driver.current_url)
 
