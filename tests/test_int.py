@@ -64,3 +64,33 @@ class TestAddArmy(TestBase):
             entry = Army.query.filter_by(name=name, description=description).first()
             self.assertNotEqual(entry, None)
     
+class TestAddFigure(TestBase):
+    TEST_CASES = [("Terminators","6","Choas","")]
+
+    def submit_input(self, name, description):
+        self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
+        self.driver.find_element_by_xpath('//*[@id="number_of_models"]').send_keys(description)
+        self.driver.find_element_by_xpath('//*[@id="faction"]/option[4]').click()
+        self.driver.find_element_by_xpath('//*[@id="army"]/option[1]').click()
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+
+    def test_create(self):
+        self.driver.get(f'http://localhost:{self.TEST_PORT}/add_figure')
+        for name, number_of_models, faction, army in self.TEST_CASES:
+            self.submit_input(name, number_of_models, faction, army)
+            self.assertIn(url_for('home'), self.driver.current_url)
+
+            text = self.driver.find_element_by_xpath('/html/body/div[1]').text
+            self.assertEqual(text, name)
+
+            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            self.assertEqual(text, number_of_models)
+
+            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            self.assertEqual(text, faction)
+
+            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            self.assertEqual(text, army)
+
+            entry = Army.query.filter_by(name=name, number_of_models=number_of_models, faction=faction, army=army).first()
+            self.assertNotEqual(entry, None)
