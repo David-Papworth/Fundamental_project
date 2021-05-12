@@ -67,9 +67,9 @@ class TestAddArmy(TestBase):
 class TestAddFigure(TestBase):
     TEST_CASES = [("Terminators","6","Choas","")]
 
-    def submit_input(self, name, description):
+    def submit_input(self, name, number_of_models, faction, army):
         self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
-        self.driver.find_element_by_xpath('//*[@id="number_of_models"]').send_keys(description)
+        self.driver.find_element_by_xpath('//*[@id="number_of_models"]').send_keys(number_of_models)
         self.driver.find_element_by_xpath('//*[@id="faction"]/option[4]').click()
         self.driver.find_element_by_xpath('//*[@id="army"]/option[1]').click()
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
