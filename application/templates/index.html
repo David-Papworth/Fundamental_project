@@ -3,13 +3,18 @@
 
 <h2>Figures List</h2>
 {% for figure in all_figures %}
+    <div>
     {{ figure.name }}
-    <br>
+    </div>
+    <div>
     {{ figure.number_of_models }}
-    <br>
+    </div>
+    <div>
     {{ figure.faction }}
-    <br>
+    </div>
+    <div>
     {{ figure.army.name }}
+    </div>
     <form action="{{ url_for('update_figure', id=figure.id) }}">
         <input type=submit value="update">
     </form>

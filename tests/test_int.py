@@ -44,7 +44,7 @@ class TestBase(LiveServerTestCase):
 class TestAddArmy(TestBase):
     TEST_CASES = [("army 1","this is army 1")]
 
-    def submit_input(self, name, description): # custom method
+    def submit_input(self, name, description):
         self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
         self.driver.find_element_by_xpath('//*[@id="description"]').send_keys(description)
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
