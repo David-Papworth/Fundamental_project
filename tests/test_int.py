@@ -50,7 +50,7 @@ class TestAddArmy(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
-        self.driver.get(f'http://localhost:{self.TEST_PORT}')
+        self.driver.get(f'http://localhost:{self.TEST_PORT}/add_army')
         for name, description in self.TEST_CASES:
             self.submit_input(name, description)
             self.assertIn(url_for('view_army'), self.driver.current_url)
