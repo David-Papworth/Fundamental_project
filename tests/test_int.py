@@ -86,10 +86,10 @@ class TestAddFigure(TestBase):
             text = self.driver.find_element_by_xpath('/html/body/div[2]').text
             self.assertEqual(text, number_of_models)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            text = self.driver.find_element_by_xpath('/html/body/div[3]').text
             self.assertEqual(text, faction)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            text = self.driver.find_element_by_xpath('/html/body/div[4]').text
             self.assertEqual(text, army)
 
             entry = Army.query.filter_by(name=name, number_of_models=number_of_models, faction=faction, army=army).first()
