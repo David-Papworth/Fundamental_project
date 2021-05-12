@@ -101,9 +101,9 @@ class TestRead1(TestBase):
         
 
 class TestCreate1(TestBase):
-    def test_create_army(self):
+    def test_create_figure(self):
         response = self.client.post(url_for('add_figure'),
-        data=dict(name='Figure 2', number_of_models=9, faction='Space Marines', army_id=1),
+        data=dict(name='Figure 2', number_of_models=9, faction='Space Marines', army=1),
         follow_redirects=True
         )
         self.assertIn(b"Figure 2", response.data)
@@ -112,7 +112,7 @@ class TestCreate1(TestBase):
         self.assertIn(b"1", response.data)
 
 class TestUpdate1(TestBase):
-    def test_update_army(self):
+    def test_update_figure(self):
         response = self.client.post(url_for('update_figure', id=1),
         data=dict(name="Update figure", number_of_models=9, faction='Space Marines', army_id=1),
         follow_redirects=True
@@ -123,7 +123,7 @@ class TestUpdate1(TestBase):
         self.assertIn(b"1", response.data)
 
 class TestDelete1(TestBase):
-    def test_delete_army(self):
+    def test_delete_figure(self):
         response = self.client.get(url_for('delete_figure', id=1),
         follow_redirects=True
         )
