@@ -42,7 +42,7 @@ class TestBase(LiveServerTestCase):
         self.assertEqual(response.code, 200)
 
 class TestAddArmy(TestBase):
-    TEST_CASES = [("army 1","this is army 1"), ("army 2","this is army 2"), ("army 3","this is army 3")]
+    TEST_CASES = [("army 1","this is army 1")]
 
     def submit_input(self, name, description): # custom method
         self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
