@@ -19,10 +19,21 @@
     * [Web Design](#Web-Design)
     * [Code](#Code)
     * [Testing](#Testing)
+* [Author](#Author)
 
 ## Introduction
+The object of the project was “To create a CRUD application with utilisation of supporting tools, methodologies and technologies that encapsulate all core modules covered during training”.
+
+This means I had to make a website with create, read, update and delete functions and perform tests to make sure the site was working to the specifications.
 
 ### Requirements
+* A Trello board
+* A database with at least 2 tables, with at least a one-to-many relationship.
+* A detailed risk assessment. 
+* A functioning CRUD application using python.
+* Automated test units 
+* A working front-end website using Flask
+* Integration into a Version Control System (Github) 
 
 ### User Stories
 
