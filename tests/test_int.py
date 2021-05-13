@@ -50,19 +50,21 @@ class TestAddArmy(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
+        i = 1
         for name, description in self.TEST_CASES:
             self.driver.get(f'http://localhost:{self.TEST_PORT}/add_army')
             self.submit_input(name, description)
             self.assertIn(url_for('view_army'), self.driver.current_url)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[1]').text
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i}]').text
             self.assertEqual(text, name)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i+1}]').text
             self.assertEqual(text, description)
 
-            entry = Army.query.order_by(Army.id.desc()).filter_by(name=name, description=description).first()
+            entry = Army.query.filter_by(name=name, description=description).first()
             self.assertNotEqual(entry, None)
+            i += 2
     
 class TestAddFigure(TestBase):
     TEST_CASES = [("Terminators","6","Choas","")]

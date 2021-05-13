@@ -4,10 +4,10 @@
 <h2>Army List</h2>
 {% for army in all_armies %}
     <div>
-    {{ army.name }}
+    Army name: {{ army.name }}
     </div>
     <div>
-    {{ army.description }}
+    Army description: {{ army.description }}
     </div>
     <form action="{{ url_for('update_army', id=army.id) }}">
         <input type=submit value="update">
