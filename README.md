@@ -100,54 +100,41 @@ The risk assessment below shows all the risks involved with this project.
 All test was run using pytest and Jenkins. The first code shows the code used to the run the unit tests (test_unit file under the tests folder) in Jenkins. The second code was to run both the unit tests and integrations tests (both test files in the tests folder) in Jenkins it is also found as test.sh in the application. 
 
 Code 1:
-
+```
 #!/bin/bash
 
 sudo apt update 
-
 sudo apt install python3 python3-pip python3-venv -y
 
 python3 -m venv venv
-
 source ./venv/bin/activate
-
 pip3 install -r requirements.txt
 
 export DATABASE_URI
-
 export SECRET_KEY
 
 pip3 install pytest pytest-cov flask_testing 
-
 python3 -m pytest --junitxml=junit/test-results.xml --cov=application 
 --cov-report=xml --cov-report=html
-
+```
 Code 2:
-
+```
 #!/bin/bash
 
 sudo apt update 
-
 sudo apt install python3 python3-pip python3-venv chromium-browser wget unzip -y
-
 wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip
-
 sudo unzip chromedriver_linux64.zip -d /usr/bin
-
 rm chromedriver_linux64.zip
 
 python3 -m venv venv
-
 source ./venv/bin/activate
-
 pip3 install -r requirements.txt
 
 export DATABASE_URI
-
 export SECRET_KEY
-
 python3 -m pytest --junitxml=junit/test-results.xml --cov=application --cov-report=xml --cov-report=html
-
+```
 ### Unit Testing 
 This was used to make sure all the webpages and links worked correctly and if the CRUD functions worked as intended.
 
