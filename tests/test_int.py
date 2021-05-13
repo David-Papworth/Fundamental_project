@@ -83,16 +83,16 @@ class TestAddFigure(TestBase):
             self.assertIn(url_for('home'), self.driver.current_url)
 
             text = self.driver.find_element_by_xpath('/html/body/div[1]').text
-            self.assertIn(text, name)
+            self.assertIn(name, text )
 
             text = self.driver.find_element_by_xpath('/html/body/div[2]').text
-            self.assertIn(text, number_of_models)
+            self.assertIn(number_of_models, text)
 
             text = self.driver.find_element_by_xpath('/html/body/div[3]').text
-            self.assertIn(text, faction)
+            self.assertIn(faction, text)
 
             text = self.driver.find_element_by_xpath('/html/body/div[4]').text
-            self.assertIn(text, army)
+            self.assertIn(army, text)
 
             entry = Figure.query.filter_by(name=name, number_of_models=int(number_of_models), faction=faction).first()
             self.assertNotEqual(entry, None)
