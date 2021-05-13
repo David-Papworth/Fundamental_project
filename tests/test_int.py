@@ -67,7 +67,7 @@ class TestAddArmy(TestBase):
             i += 2
     
 class TestAddFigure(TestBase):
-    TEST_CASES = [("Terminators","6","Choas","")]
+    TEST_CASES = [("Terminators","6","Choas",""), ("Marine","3","Choas",""), ("Demon","2","Choas","")]
 
     def submit_input(self, name, number_of_models, faction, army):
         self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
@@ -77,22 +77,24 @@ class TestAddFigure(TestBase):
         self.driver.find_element_by_xpath('//*[@id="submit"]').click()
 
     def test_create(self):
+        i = 1
         for name, number_of_models, faction, army in self.TEST_CASES:
             self.driver.get(f'http://localhost:{self.TEST_PORT}/add_figure')
             self.submit_input(name, number_of_models, faction, army)
             self.assertIn(url_for('home'), self.driver.current_url)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[1]').text
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i}]').text
             self.assertIn(name, text )
 
-            text = self.driver.find_element_by_xpath('/html/body/div[2]').text
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i+1}]').text
             self.assertIn(number_of_models, text)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[3]').text
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i+2}]').text
             self.assertIn(faction, text)
 
-            text = self.driver.find_element_by_xpath('/html/body/div[4]').text
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i+3}]').text
             self.assertIn(army, text)
 
             entry = Figure.query.filter_by(name=name, number_of_models=int(number_of_models), faction=faction).first()
             self.assertNotEqual(entry, None)
+            i += 4
