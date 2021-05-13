@@ -16,10 +16,10 @@
     * [Integration Testing](#Integration-Testing)
 * [Front End Design](#Front-End-Design)
 * [Future Improvements](#Future-Improvements)
-    * [Project Tracking](#Project-Tracking)
-    * [Web Design](#Web-Design)
-    * [Code](#Code)
-    * [Testing](#Testing)
+    * [Project Tracking](#Project-Tracking-Improvement)
+    * [Web Design](#Web-Design-Improvement)
+    * [Code](#Code-Improvement)
+    * [Testing](#Testing-Improvement)
 * [Author](#Author)
 
 ## Introduction
@@ -106,13 +106,13 @@ The risk assessment below shows all the risks involved with this project.
 
 ## Future Improvements 
 
-### Project Tracking
+### Project Tracking Improvemnt 
 
-### Web Design 
+### Web Design Improvement
 
-### Code 
+### Code Improvement
 
-### Testing 
+### Testing Improvement
 
 ## Author
 David Papworth
