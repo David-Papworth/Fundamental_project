@@ -97,22 +97,87 @@ The other colours of tags show which sections are related (e.g. the user story w
 The risk assessment below shows all the risks involved with this project. 
 
 ## Testing 
+All test was run using pytest and Jenkins. The first code shows the code used to the run the unit tests (test_unit file under the tests folder) in Jenkins. The second code was to run both the unit tests and integrations tests (both test files in the tests folder) in Jenkins it is also found as test.sh in the application. 
+
+Code 1:
+
+#!/bin/bash
+
+sudo apt update 
+
+sudo apt install python3 python3-pip python3-venv -y
+
+python3 -m venv venv
+
+source ./venv/bin/activate
+
+pip3 install -r requirements.txt
+
+export DATABASE_URI
+
+export SECRET_KEY
+
+pip3 install pytest pytest-cov flask_testing 
+
+python3 -m pytest --junitxml=junit/test-results.xml --cov=application 
+--cov-report=xml --cov-report=html
+
+Code 2:
+
+#!/bin/bash
+
+sudo apt update 
+
+sudo apt install python3 python3-pip python3-venv chromium-browser wget unzip -y
+
+wget https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip
+
+sudo unzip chromedriver_linux64.zip -d /usr/bin
+
+rm chromedriver_linux64.zip
+
+python3 -m venv venv
+
+source ./venv/bin/activate
+
+pip3 install -r requirements.txt
+
+export DATABASE_URI
+
+export SECRET_KEY
+
+python3 -m pytest --junitxml=junit/test-results.xml --cov=application --cov-report=xml --cov-report=html
 
 ### Unit Testing 
+This was used to make sure all the webpages and links worked correctly and if the CRUD functions worked as intended.
+
+The image below shows a successful unit test in Jenkins. 
 
 ### Integration Testing 
+This was used to make sure that the pathway a user would take would work at every step (e.g. button clicks, text entry, redirect).
+
+The image below shows a successful full integrations and unit test test in Jenkins. 
 
 ## Front End Design
+Below is the home page where you can see the figures you own, links to all the other pages, update and delete buttons for the figures you own. 
+
+Below is the add figure page where you can the form that can filled out to add a figure as well as link to the other pages. 
+
+Below is the view army page where you can see the armies you own, links to all the other pages, update and delete buttons for the armies you own. 
+
+Below is the add amy page where you can the form that can filled out to add a army as well as link to the other pages. 
 
 ## Future Improvements 
-
+* Add user logging so people can have their own account and don’t change other people’s data. 
 ### Project Tracking Improvement 
-
+* Add checks to user stories rather then added them as extra items to reduce the number of items in the Trello broad.
 ### Web Design Improvement
-
+* Changing the front end so more pleasing to the eye
 ### Code Improvement
-
+* Create the many-to many relationship between figures and armies by making the child table. Creating a add page for the relationship as well as a form (2 select fields (army and figure) made the same way as the select army in the figures form). Finally making a view page where you can see the full list of all the army with the figures they hold. 
+* Implement custom validators to make sure that the figure being added exist.  
+* Increasing the number of factions to correct amount (currently 6 out of 22)
 ### Testing Improvement
-
+* More interaction tests so that all the crud functions as well as other customer interactions are tested 
 ## Author
 David Papworth
