@@ -57,10 +57,10 @@ class TestAddArmy(TestBase):
             self.assertIn(url_for('view_army'), self.driver.current_url)
 
             text = self.driver.find_element_by_xpath(f'/html/body/div[{i}]').text
-            self.assertIn(text, name)
+            self.assertIn(name, text)
 
             text = self.driver.find_element_by_xpath(f'/html/body/div[{i+1}]').text
-            self.assertIn(text, description)
+            self.assertIn(description, text)
 
             entry = Army.query.filter_by(name=name, description=description).first()
             self.assertNotEqual(entry, None)
