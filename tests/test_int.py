@@ -61,7 +61,7 @@ class TestAddArmy(TestBase):
             text = self.driver.find_element_by_xpath('/html/body/div[2]').text
             self.assertEqual(text, description)
 
-            entry = Army.query.order_by(Army.id.des()).filter_by(name=name, description=description).first()
+            entry = Army.query.order_by(Army.id.desc()).filter_by(name=name, description=description).first()
             self.assertNotEqual(entry, None)
     
 class TestAddFigure(TestBase):
