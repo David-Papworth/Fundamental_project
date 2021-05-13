@@ -42,7 +42,7 @@ class TestBase(LiveServerTestCase):
         self.assertEqual(response.code, 200)
 
 class TestAddArmy(TestBase):
-    TEST_CASES = [("army 1","this is army 1")]
+    TEST_CASES = [("army 1","this is army 1"), ("army 2","this is army 2"), ("army 3","this is army 3")]
 
     def submit_input(self, name, description):
         self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
@@ -61,7 +61,7 @@ class TestAddArmy(TestBase):
             text = self.driver.find_element_by_xpath('/html/body/div[2]').text
             self.assertEqual(text, description)
 
-            entry = Army.query.filter_by(name=name, description=description).first()
+            entry = Army.query.order_by(Army.id.des()).filter_by(name=name, description=description).first()
             self.assertNotEqual(entry, None)
     
 class TestAddFigure(TestBase):
