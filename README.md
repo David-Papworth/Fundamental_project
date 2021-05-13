@@ -106,7 +106,7 @@ The risk assessment below shows all the risks involved with this project.
 
 ## Future Improvements 
 
-### Project Tracking Improvemnt 
+### Project Tracking Improvement 
 
 ### Web Design Improvement
 
