@@ -69,12 +69,32 @@ The first step was to create user stories to plan what needed to be done and why
 
 ## Architecture
 ### Database Structure
+The picture below shows the entity relationship diagram (ERD) for the project, this is a one-to-many relationship.  This means 1 army could be made up of multiple figures but 1 figure could only be in one army. 
 
+
+This second picture shows a planned many-to-many relationship between army and figures. Using a child table in the middle which as 2 one-to-many relationships. This would allow figures to be present in multiple armies. This was not able to be implemented in time but can be found in the Future improvements section explaining how I would have created this relationship. 
 ### CI Pipline
 
+
+The picture above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is push to Github, Jenkins will fetch and build the repository, it will then run unit tests as well as integration tests.   This will then send a report to the developer informing of the result.
 ## Project Tracking
+I used Trello for project tracking as free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found: https://trello.com/b/yidIppbC/devops-core-fundamental-project 
+
+
+The key areas of the Trello:
+Project backlog: Show the items not being worked on in the sprint during this sprint
+
+Sprint backlog: Shows the items being worked on this sprint that have not been completed 
+
+Review: Items that have been completed but need to be check if they are working to the set parameters 
+Complete: Items that have been finished 
+
+Also, Moscow was implemented on the project using tags (Green means must have, Orange Could have, Red won’t have).
+
+The other colours of tags show which sections are related (e.g. the user story with the task to complete that user story).   
 
 ## Risk Assessment 
+The risk assessment below shows all the risks involved with this project. 
 
 ## Testing 
 
