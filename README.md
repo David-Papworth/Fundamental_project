@@ -69,10 +69,11 @@ The first step was to create user stories to plan what needed to be done and why
 
 ## Architecture
 ### Database Structure
-The picture below shows the entity relationship diagram (ERD) for the project, this is a one-to-many relationship.  This means 1 army could be made up of multiple figures but 1 figure could only be in one army. 
-
+The picture below shows the entity relationship diagram (ERD) for the project, this is a one-to-many relationship.  This means 1 army could be made up of multiple figures but 1 figure/model could only be in one army. 
+![Image showing a one to many relationship between Army and Models/Figures](https://i.imgur.com/6Za6sc5.png?1)
 
 This second picture shows a planned many-to-many relationship between army and figures. Using a child table in the middle which as 2 one-to-many relationships. This would allow figures to be present in multiple armies. This was not able to be implemented in time but can be found in the Future improvements section explaining how I would have created this relationship. 
+![Image showing a many to many relationship between Army and Models/Figures](https://i.imgur.com/wn0Roh0.png?1)
 ### CI Pipline
 
 
