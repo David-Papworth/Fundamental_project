@@ -8,7 +8,7 @@
     * [My Plan](#My-Plan)
 * [Architecture](#Architecture)
     * [Database Structure](#Database-Structure)
-    * [CI Pipeline](#CI-Pipline)
+    * [CI Pipeline](#CI-Pipeline)
 * [Project Tracking](#Project-Tracking)
 * [Risk Assessment](#Risk-Assessment)
 * [Testing](#Testing)
@@ -74,8 +74,8 @@ The picture below shows the entity relationship diagram (ERD) for the project, t
 
 This second picture shows a planned many-to-many relationship between army and figures. Using a child table in the middle which as 2 one-to-many relationships. This would allow figures to be present in multiple armies. This was not able to be implemented in time but can be found in the Future improvements section explaining how I would have created this relationship. 
 ![Image showing a many to many relationship between Army and Models/Figures](https://i.imgur.com/wn0Roh0.png?1)
-### CI Pipline
-
+### CI Pipeline
+![Image showing the CI Pipeline for this project](https://i.imgur.com/tusyMML.png?1)
 
 The picture above shows the CI pipeline used for this project. Continuous Integration allows me to automate testing as well as deployment of the website. This increases the speed and precision of the project. In my method, when the code is push to Github, Jenkins will fetch and build the repository, it will then run unit tests as well as integration tests.   This will then send a report to the developer informing of the result.
 ## Project Tracking
