@@ -174,6 +174,7 @@ My code covers all the CRUD functions as well as status 200 for all the webpages
 ### Integration Testing 
 This was used to make sure that the pathway a user would take would work at every step (e.g. button clicks, text entry, redirect).
 
+The code below shows the integration test for adding an army 
 ```
 class TestAddArmy(TestBase):
     TEST_CASES = [("army 1","this is army 1"), ("army 2","this is army 2"), ("army 3","this is army 3")]
@@ -203,6 +204,7 @@ class TestAddArmy(TestBase):
 
 The image below shows a successful full integrations and unit test test in Jenkins. 
 
+My integration tests cover both adding an army and a figure. Additional integration tests that could be implemented include tests for the rest of the crud functions, tests for when incorrect data is added to the system and a error message appears (custom validators would need to be added), and if a person went to an incorrect webpage they would be able to return correctly. 
 ## Front End Design
 Below is the home page where you can see the figures you own, links to all the other pages, update and delete buttons for the figures you own. 
 
