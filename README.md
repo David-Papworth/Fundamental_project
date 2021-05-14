@@ -80,6 +80,16 @@ The picture above shows the CI pipeline used for this project. Continuous Integr
 ## Project Tracking
 I used Trello for project tracking as free, light-wieght and easy to use. Below are a few images showing different stages of the sprint. The Trello board can be also found: https://trello.com/b/yidIppbC/devops-core-fundamental-project 
 
+![Image showing the start of the first sprint](https://i.imgur.com/n0edHb6.png?1)
+![Image showing complete website and unit tests with integration tests to be done](https://i.imgur.com/MrlXnHr.png?1)
+![Image showing the end of the first sprint](https://i.imgur.com/3CQXO2C.png?1)
+
+Image 1 is the start of the project with only the database setup for the project
+
+Image 2 shows a complete website and unit test with only integration tests left to complete the first sprint. This image also shows the integration test being added to the Trello since the start of the project. 
+
+Image 3 is the end of the first sprint with all items complete in the sprint backlog. 
+
 
 The key areas of the Trello:
 Project backlog: Show the items not being worked on in the sprint during this sprint
@@ -136,12 +146,60 @@ export SECRET_KEY
 python3 -m pytest --junitxml=junit/test-results.xml --cov=application --cov-report=xml --cov-report=html
 ```
 ### Unit Testing 
-This was used to make sure all the webpages and links worked correctly and if the CRUD functions worked as intended.
+This was used to make sure all the webpages and links worked correctly and if the CRUD functions worked as intended. As well as run a coverage report. Coverage shows the number of lines that the code read though and run to complete the pytest it doesn’t show that the code has given the intended output only that it had been run. We check for the intended output by added assertions in which compares the output with a selected item (text, status code, etc). 
 
+The code below shows a unit test to check if going to the home page would return a status 200 (success) meaning the webpage would load correctly. 
+```
+class TestViews(TestBase):
+    def test_home_get(self):
+        response = self.client.get(url_for('home'))
+        self.assertEqual(response.status_code, 200)
+```
+The code below shows the unit test for adding an item into the army data and checking if those items appeared on the view army page.
+```
+class TestCreate(TestBase):
+    def test_create_army(self):
+        response = self.client.post(url_for('add_army'),
+        data=dict(name='new army', description="This is my new army"),
+        follow_redirects=True
+        )
+        self.assertIn(b"This is my new army", response.data)
+        self.assertIn(b"new army", response.data)
+```
 The image below shows a successful unit test in Jenkins. 
+![Image showing a sucessful coverage and unit test in Jenkins](https://i.imgur.com/PVVT8Dw.png?1)
+As you can see in the image above there was improvement in the coverage between test 2 and 3 from about 90% to 100% and all the test passed successfully. 
 
+My code covers all the CRUD functions as well as status 200 for all the webpages and functions used. A few extra unit test that could be implemented include a test to check if when some tries to type in their search bar the update page for a item that not present in the data (e.g /update_army/5 when there are only 4 armies) they would receive a message to tell them to return to the view army page as that item does not exists (this would need an some code added to the update item function to check if the int number is greater the number of armies to return the desired text) and a test to check when incorrect text is added a error message is displayed rather than allow this into the database (a custom validator would need to be make to check for these incorrect submissions).
 ### Integration Testing 
 This was used to make sure that the pathway a user would take would work at every step (e.g. button clicks, text entry, redirect).
+
+```
+class TestAddArmy(TestBase):
+    TEST_CASES = [("army 1","this is army 1"), ("army 2","this is army 2"), ("army 3","this is army 3")]
+
+    def submit_input(self, name, description):
+        self.driver.find_element_by_xpath('//*[@id="name"]').send_keys(name)
+        self.driver.find_element_by_xpath('//*[@id="description"]').send_keys(description)
+        self.driver.find_element_by_xpath('//*[@id="submit"]').click()
+
+    def test_create(self):
+        i = 1
+        for name, description in self.TEST_CASES:
+            self.driver.get(f'http://localhost:{self.TEST_PORT}/add_army')
+            self.submit_input(name, description)
+            self.assertIn(url_for('view_army'), self.driver.current_url)
+
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i}]').text
+            self.assertIn(name, text)
+
+            text = self.driver.find_element_by_xpath(f'/html/body/div[{i+1}]').text
+            self.assertIn(description, text)
+
+            entry = Army.query.filter_by(name=name, description=description).first()
+            self.assertNotEqual(entry, None)
+            i += 2
+```
 
 The image below shows a successful full integrations and unit test test in Jenkins. 
 
@@ -166,5 +224,6 @@ Below is the add amy page where you can the form that can filled out to add a ar
 * Increasing the number of factions to correct amount (currently 6 out of 22)
 ### Testing Improvement
 * More interaction tests so that all the crud functions as well as other customer interactions are tested 
+* Stress tests such as to check if x button is pressed (x times) will the website break, how many user would it take to crash the site and if I pressed the button multiple times (quickly)  will it give the correct response each time.
 ## Author
 David Papworth
