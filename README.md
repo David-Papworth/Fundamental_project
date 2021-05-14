@@ -209,11 +209,19 @@ My integration tests cover both adding an army and a figure. Additional integrat
 ## Front End Design
 Below is the home page where you can see the figures you own, links to all the other pages, update and delete buttons for the figures you own. 
 
+![Image showing the home/view figure page](https://i.imgur.com/1UH4dN9.png?1)
+
 Below is the add figure page where you can the form that can filled out to add a figure as well as link to the other pages. 
+
+![Image showing the add figure page](https://i.imgur.com/uUJWvw6.png?1)
 
 Below is the view army page where you can see the armies you own, links to all the other pages, update and delete buttons for the armies you own. 
 
+![Image showing the view army page](https://i.imgur.com/2IdR774.png?1)
+
 Below is the add amy page where you can the form that can filled out to add a army as well as link to the other pages. 
+
+![Image showing the add army page](https://i.imgur.com/qe3JD7Z.png?1)
 
 ## Future Improvements 
 * Add user logging so people can have their own account and don’t change other people’s data. 
