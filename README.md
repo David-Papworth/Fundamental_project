@@ -204,7 +204,7 @@ class TestAddArmy(TestBase):
 ```
 
 The image below shows a successful full integrations and unit test test in Jenkins. 
-
+![Image showing a sucessful integration test in Jenkins](https://i.imgur.com/p4wcUBU.png?1)
 My integration tests cover both adding an army and a figure. Additional integration tests that could be implemented include tests for the rest of the crud functions, tests for when incorrect data is added to the system and a error message appears (custom validators would need to be added), and if a person went to an incorrect webpage they would be able to return correctly. 
 ## Front End Design
 Below is the home page where you can see the figures you own, links to all the other pages, update and delete buttons for the figures you own. 
