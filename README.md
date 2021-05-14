@@ -106,7 +106,7 @@ The other colours of tags show which sections are related (e.g. the user story w
 
 ## Risk Assessment 
 The risk assessment below shows all the risks involved with this project. 
-
+![Image showing the risk assessment for the project](https://i.imgur.com/33nKU2C.png?1)
 ## Testing 
 All test was run using pytest and Jenkins. The first code shows the code used to the run the unit tests (test_unit file under the tests folder) in Jenkins. The second code was to run both the unit tests and integrations tests (both test files in the tests folder) in Jenkins it is also found as test.sh in the application. 
 
