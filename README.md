@@ -233,6 +233,8 @@ Below is the add amy page where you can the form that can filled out to add a ar
 * Create the many-to many relationship between figures and armies by making the child table. Creating a add page for the relationship as well as a form (2 select fields (army and figure) made the same way as the select army in the figures form). Finally making a view page where you can see the full list of all the army with the figures they hold. 
 * Implement custom validators to make sure that the figure being added exist.  
 * Increasing the number of factions to correct amount (currently 6 out of 22)
+* Use multiple Vcs / implement Gunicorn to reduce loss of service.
+* Make the website into a demon process so it can run in the background.
 ### Testing Improvement
 * More interaction tests so that all the crud functions as well as other customer interactions are tested 
 * Stress tests such as to check if x button is pressed (x times) will the website break, how many user would it take to crash the site and if I pressed the button multiple times (quickly)  will it give the correct response each time.
