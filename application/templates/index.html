@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<h2>Figures List</h2>
+{% for figure in all_figures %}
+    <div>
+    Figure name: {{ figure.name }}
+    </div>
+    <div>
+    Number of figures: {{ figure.number_of_models }}
+    </div>
+    <div>
+    Faction: {{ figure.faction }}
+    </div>
+    <div>
+    Part of army: {{ figure.army.name }}
+    </div>
+    <form action="{{ url_for('update_figure', id=figure.id) }}">
+        <input type=submit value="update">
+    </form>
+    <form action="{{ url_for('delete_figure', id=figure.id) }}">
+        <input type=submit value="delete">
+    </form>
+    <br>
+{% endfor %}
+
+{% endblock body %}

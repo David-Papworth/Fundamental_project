@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+<h2>Army List</h2>
+{% for army in all_armies %}
+    <div>
+    Army name: {{ army.name }}
+    </div>
+    <div>
+    Army description: {{ army.description }}
+    </div>
+    <form action="{{ url_for('update_army', id=army.id) }}">
+        <input type=submit value="update">
+    </form>
+    <form action="{{ url_for('delete_army', id=army.id) }}">
+        <input type=submit value="delete">
+    </form>
+    <br>
+    <br>
+{% endfor %}
+
+{% endblock body %}
