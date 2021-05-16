@@ -107,8 +107,10 @@ Also, Moscow was implemented on the project using tags (Green means must have, O
 The other colours of tags show which sections are related (e.g. the user story with the task to complete that user story).   
 
 ## Risk Assessment 
-The risk assessment below shows all the risks involved with this project. 
+The risk assessment below shows all the risks involved with this project.
 ![Image showing the risk assessment for the project](https://i.imgur.com/33nKU2C.png?1)
+
+All item highlighted in grey were risks added during the project sprint. 
 ## Testing 
 All test was run using pytest and Jenkins. Code 1 was used to run the unit tests (test_unit file under the tests folder) in Jenkins. Code 2 was used to run both the unit tests and integrations tests (both test files are stored in the tests folder) in Jenkins it is also found as test.sh in the application. 
 
