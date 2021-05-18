@@ -243,4 +243,4 @@ Below is the add army page where you can complete the form to add a army as well
 * More integration tests so that all the crud functions as well as other customer interactions are tested 
 * Stress tests such as to check if x button is pressed (x times) will the website break, how many user would it take to crash the site and if a button is pressed multiple times (quickly)  will it give the correct response each time.
 ## Author
-David Papworth 
+David Papworth  
