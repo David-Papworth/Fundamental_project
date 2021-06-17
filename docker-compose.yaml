@@ -5,8 +5,8 @@ services:
         image: davidpapworth2/todo_app
         build: .
         environment:
-          DATABASE_URI: 'mysql+pymysql://root:root@35.242.185.109/picks'
-          SECRET_KEY: hgjkeebhgvbhjbvfhj
+          DATABASE_URI: 
+          SECRET_KEY: 
         ports:
         - published: 5000
           target: 80

@@ -33,6 +33,6 @@ spec:
         - containerPort: 5000
         env:
         - name: DATABASE_URI
-          value: 'mysql+pymysql://root:root@35.242.185.109/picks'
+          value: 
         - name: SECRET_KEY
-          value: hgjkeebhgvbhjbvfhj
+          value: 
